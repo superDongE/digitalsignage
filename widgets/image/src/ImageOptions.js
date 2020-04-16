@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Input, InlineInputGroup } from '../../../components/Form'
 import { standaloneUpload } from '../../../actions/slide'
-
 class ImageOptions extends Component {
   constructor(props) {
     super(props)
@@ -36,12 +35,12 @@ class ImageOptions extends Component {
     return (
       <div className={'container'}>
         <Form>
-          <h3>Widget: Standalone Image</h3>
-          <p>Choose your preferences for the image widget.</p>
+          <h3>위젯: 이미지</h3>
+          <p>이미지 위젯 설정</p>
           <InlineInputGroup>
             <Input
               inline={false}
-              label={'Background'}
+              label={'배경색'}
               type={'color'}
               name={'color'}
               value={color}
@@ -50,7 +49,7 @@ class ImageOptions extends Component {
             />
             <Input
               inline={false}
-              label={'Title (Optional)'}
+              label={'제목'}
               type={'text'}
               name={'title'}
               placeholder={'Optional title...'}
@@ -62,7 +61,7 @@ class ImageOptions extends Component {
           <InlineInputGroup>
             <Input
               inline={false}
-              label={'Image'}
+              label={'이미지'}
               type={'photo'}
               name={'url'}
               value={url}
@@ -70,7 +69,7 @@ class ImageOptions extends Component {
             />
             <Input
               inline={false}
-              label={'Image fit'}
+              label={'사진 편집'}
               type={'select'}
               name={'fit'}
               value={fit}
