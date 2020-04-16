@@ -63,8 +63,8 @@ class Slideshow extends React.Component {
         <div className='editable-title'>
           <input
             className='input'
-            placeholder='Untitled Slideshow'
-            value={slideshow && slideshow.title}
+            placeholder=''
+            defaultvalue={slideshow && slideshow.title}
             onChange={event => {
               const target = event.target
               const title = target && target.value

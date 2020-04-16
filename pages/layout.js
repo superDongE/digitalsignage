@@ -97,8 +97,8 @@ class Layout extends React.Component {
           <div className='editable-title'>
             <input
               className='input'
-              placeholder='Unnamed display'
-              value={display && display.name}
+              placeholder=''
+              defaultvalue={display && display.name}
               onChange={event => {
                 const target = event.target
                 const title = target && target.value
@@ -113,20 +113,10 @@ class Layout extends React.Component {
               <FontAwesomeIcon icon={faPencilAlt} fixedWidth color='#828282' />
             </div>
           </div>
+
+
         </div>
-        <div className='settings'>
-          <DropdownButton
-            icon='plus'
-            text='Add Status Bar Item'
-            onSelect={display.addStatusBarItem}
-            choices={Object.keys(StatusBarElementTypes).map(statusBarEl => ({
-              key: statusBarEl,
-              name: StatusBarElementTypes[statusBarEl].name,
-              icon: StatusBarElementTypes[statusBarEl].icon
-            }))}
-          />
-        </div>
-        <div className='statusbar'>
+        <div className=''>
           {display && display.statusBar && (
             <DragDropContext onDragEnd={this.onDragEnd}>
               <Droppable droppableId='droppable' direction='horizontal'>

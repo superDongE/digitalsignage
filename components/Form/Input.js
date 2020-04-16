@@ -79,7 +79,7 @@ class Input extends React.Component {
             className={className}
             type={type}
             placeholder={placeholder}
-            value={value}
+            defaultvalue={this.state.value}
             onChange={this.handleInputChange}
             disabled={disabled}
             onKeyDown={onKeyDown}
@@ -126,7 +126,7 @@ class Input extends React.Component {
         ) : (
           <textarea
             onChange={this.handleInputChange}
-            value={value}
+            defaultvalue={this.state.value}
             placeholder={placeholder}
             className={className}
           />
