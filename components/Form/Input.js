@@ -79,7 +79,7 @@ class Input extends React.Component {
             className={className}
             type={type}
             placeholder={placeholder}
-            value={value}
+            defaultvalue={this.state.value}
             onChange={this.handleInputChange}
             disabled={disabled}
             onKeyDown={onKeyDown}
@@ -123,14 +123,43 @@ class Input extends React.Component {
               )
             }}
           </DropzoneWithNoSSR>
-        ) : (
-          <textarea
-            onChange={this.handleInputChange}
-            value={value}
-            placeholder={placeholder}
-            className={className}
-          />
-        )}
+        ) : type == 'video' ? (
+          <DropzoneWithNoSSR
+            accept='video/*'
+            onDropAccepted={this.handleOnDropAccepted}
+            onDropRejected={this.handleOnDropRejected}
+            multiple={false}
+          >
+            {({ getRootProps, getInputProps, isDragActive }) => {
+              return (
+                <div {...getRootProps()} className='video'>
+                  <input {...getInputProps()} />
+                  {isDragActive || (!value || value == '') ? (
+                    <div className={'video-upload'}>Drop a photo here...</div>
+                  ) : (
+                    <div className={'video'}>
+                    <div
+                      className={'thumbnail'}
+                      style={{
+                        backgroundImage: `url(${value})`
+                      }}
+                    />
+                      <span className={'link'}>{value}</span>
+                    </div>
+                  )}
+                </div>
+              )
+            }}
+            </DropzoneWithNoSSR>
+          ) : (
+            <textarea
+              onChange={this.handleInputChange}
+              defaultvalue={this.state.value}
+              placeholder={placeholder}
+              className={className}
+            />
+          )
+      }
         <style jsx>{`
           .inputGroup {
             margin-bottom: 16px;
@@ -153,6 +182,8 @@ class Input extends React.Component {
           input,
           textarea,
           select,
+          .video,
+          .video-upload,
           .photo,
           .photo-upload {
             font-family: 'Open Sans', sans-serif;
@@ -201,14 +232,18 @@ class Input extends React.Component {
             max-width: 100%;
           }
 
-          .photo {
+          .photo
+          .video
+           {
             display: flex;
             flex-direction: row;
             align-items: center;
             padding: 8px;
           }
 
-          .photo-upload {
+          .photo-upload
+          .video-upload
+          {
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -220,8 +255,14 @@ class Input extends React.Component {
             background: white;
             height: 40px;
           }
-
           .photo .link {
+            margin-left: 16px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 400px;
+          }
+          .video .link {
             margin-left: 16px;
             overflow: hidden;
             white-space: nowrap;
@@ -230,6 +271,15 @@ class Input extends React.Component {
           }
 
           .photo .thumbnail {
+            height: 40px;
+            width: 40px;
+            border-radius: 2px;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .video .thumbnail {
             height: 40px;
             width: 40px;
             border-radius: 2px;

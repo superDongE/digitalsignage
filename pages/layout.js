@@ -97,8 +97,8 @@ class Layout extends React.Component {
           <div className='editable-title'>
             <input
               className='input'
-              placeholder='Unnamed display'
-              value={display && display.name}
+              placeholder=''
+              defalutvalue={display && display.name}
               onChange={event => {
                 const target = event.target
                 const title = target && target.value
@@ -114,6 +114,14 @@ class Layout extends React.Component {
             </div>
           </div>
         </div>
+        <Form>
+          <Switch
+            checkedLabel={'On'}
+            uncheckedLabel={'Off'}
+            checked={display.layout == ''}
+            onChange={(name, checked) => display.updateLayout(checked ? '' : '')}
+          />
+        </Form>
         <div className='settings'>
           <DropdownButton
             icon='plus'
@@ -126,6 +134,7 @@ class Layout extends React.Component {
             }))}
           />
         </div>
+
         <div className='statusbar'>
           {display && display.statusBar && (
             <DragDropContext onDragEnd={this.onDragEnd}>

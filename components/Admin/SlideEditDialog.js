@@ -12,7 +12,7 @@ class SlideEditDialog extends React.Component {
 
     this.state = {
       upload: props.upload,
-      ...(props.upload ? { type: 'photo' } : {})
+      ...(props.upload ? { type: 'photo',type: 'video' } : {})
     }
   }
 
@@ -24,7 +24,7 @@ class SlideEditDialog extends React.Component {
     if (this.props.upload != prevProps.upload) {
       this.setState({
         upload: this.props.upload,
-        ...(this.props.upload ? { type: 'photo' } : {})
+        ...(this.props.upload ? { type: 'photo',type: 'video' } : {})
       })
     }
   }
@@ -41,7 +41,7 @@ class SlideEditDialog extends React.Component {
           duration: undefined,
           ...data,
           upload,
-          ...(upload ? { type: 'photo' } : {})
+          ...(upload ? { type: 'photo',type: 'video' } : {})
         })
       })
     } else {
@@ -52,7 +52,7 @@ class SlideEditDialog extends React.Component {
         type: undefined,
         duration: undefined,
         upload,
-        ...(upload ? { type: 'photo' } : {})
+        ...(upload ? { type: 'photo',type: 'video' } : {})
       })
       return Promise.resolve()
     }
@@ -106,7 +106,8 @@ class SlideEditDialog extends React.Component {
             choices={[
               { id: 'youtube', label: 'Youtube Video' },
               { id: 'web', label: 'Web Page' },
-              { id: 'photo', label: 'Photo' }
+              { id: 'photo', label: 'Photo' },
+              { id: 'video', label: 'video'}
             ]}
             onChange={this.handleChange}
           />
@@ -114,6 +115,15 @@ class SlideEditDialog extends React.Component {
             <Input
               type={'photo'}
               label={'Photo'}
+              name={'upload'}
+              value={upload ? upload.preview : data}
+              onChange={this.handleChange}
+              inline={true}
+            />
+          ) : type == 'video' || upload ? (
+            <Input
+              type={'video'}
+              label={'video'}
               name={'upload'}
               value={upload ? upload.preview : data}
               onChange={this.handleChange}
@@ -127,7 +137,8 @@ class SlideEditDialog extends React.Component {
               value={data}
               onChange={this.handleChange}
             />
-          )}
+          )
+        }
           <Input
             type={'number'}
             label={'Duration'}

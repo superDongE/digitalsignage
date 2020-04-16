@@ -121,14 +121,12 @@ class Sidebar extends Component {
             </Link>
           ))}
         </ul>
-        {loggedIn && (
-          <div className='logout' onClick={() => logout()}>
-            <a>
+        <Link href='/'>
+          <span className='back'>
               <FontAwesomeIcon icon={faSignOutAlt} fixedWidth />
-              <span className={'text'}>{'   Logout'}</span>
-            </a>
-          </div>
-        )}
+              <span className={'text'}>{'   home'}</span>
+            </span>
+          </Link>
         <style jsx>
           {`
             .sidebar {
@@ -149,7 +147,7 @@ class Sidebar extends Component {
               width: 100%;
             }
             .menu li,
-            .logout {
+            .back {
               padding: 20px;
               text-transform: uppercase;
               font-family: 'Open Sans', sans-serif;
@@ -159,7 +157,7 @@ class Sidebar extends Component {
             }
             .menu li.active,
             .menu li:hover,
-            .logout:hover {
+            .back:hover {
               background: #f0f0f0;
               cursor: pointer;
             }
