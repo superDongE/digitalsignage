@@ -63,7 +63,7 @@ class Login extends Component {
         <div className='formContainer'>
           <div className='logo'>
             <div className='icon'>
-              <FontAwesomeIcon icon={faTv} fixedWidth size='lg' color='#7bc043' />
+              <FontAwesomeIcon icon={faTv} fixedWidth size='lg' color='#334467' />
             </div>
           </div>
           <form
@@ -177,8 +177,8 @@ class Login extends Component {
             }
             .form button {
               outline: none;
-              background: #7bc043;
-              border-radius: 8px;
+              background: #334467;
+              //border-radius: 8px;
               font-family: 'Open Sans', sans-serif;
               font-weight: 600;
               font-size: 18px;
