@@ -33,7 +33,6 @@ class Index extends React.Component {
     const { displays = [] } = this.state
     return (
       <div className='home'>
-        <img src ="./uploads/bb.png" alt="logo"width="1000" height="200"/>
         <img src ="./uploads/logo.png" alt="logo"width="700" height="auto"/>
         <div className='btn-group'>
           <Link href='/layout' style={{ margin: 20 }}>

@@ -97,8 +97,8 @@ class Layout extends React.Component {
           <div className='editable-title'>
             <input
               className='input'
-              placeholder='Unnamed display'
-              value={display && display.name}
+              placeholder=''
+              defalutvalue={display && display.name}
               onChange={event => {
                 const target = event.target
                 const title = target && target.value
