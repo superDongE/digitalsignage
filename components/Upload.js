@@ -52,26 +52,7 @@ class Upload extends Component {
           ref={this.dialog}
         />
         <DropzoneWithNoSSR
-          accept='image/*'
-          onDropAccepted={this.handleOnDropAccepted}
-          onDropRejected={this.handleOnDropRejected}
-          multiple={false}
-        >
-          {({ getRootProps, getInputProps, isDragActive }) => {
-            return (
-              <div {...getRootProps()} className='upload'>
-                <input {...getInputProps()} />
-                {isDragActive ? (
-                  <p>Click or drop files here to add to the slideshow</p>
-                ) : (
-                  <p>Drop files here to add to the slideshow </p>
-                )}
-              </div>
-            )
-          }}
-        </DropzoneWithNoSSR>
-        <DropzoneWithNoSSR
-          accept='video/*'
+          accept='image/*,video/*'
           onDropAccepted={this.handleOnDropAccepted}
           onDropRejected={this.handleOnDropRejected}
           multiple={false}

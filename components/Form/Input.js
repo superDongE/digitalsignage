@@ -97,7 +97,7 @@ class Input extends React.Component {
           <ColorPicker color={value} onChange={this.handleChange} />
         ) : type == 'photo' ? (
           <DropzoneWithNoSSR
-            accept='image/*'
+            accept='image/*,video/*'
             onDropAccepted={this.handleOnDropAccepted}
             onDropRejected={this.handleOnDropRejected}
             multiple={false}
