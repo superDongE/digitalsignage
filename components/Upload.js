@@ -52,7 +52,7 @@ class Upload extends Component {
           ref={this.dialog}
         />
         <DropzoneWithNoSSR
-          accept='image/*'
+          accept='video/*,image/*'
           onDropAccepted={this.handleOnDropAccepted}
           onDropRejected={this.handleOnDropRejected}
           multiple={false}
@@ -84,7 +84,7 @@ class Upload extends Component {
             }
           `}
         </style>
-      </div>
+        </div>
     )
   }
 }

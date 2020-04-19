@@ -53,6 +53,23 @@ class Input extends React.Component {
     onChange('upload', file)
   }
 
+  handleOnDropAccepted1 = acceptedFiles => {
+    const { onChange = () => {} } = this.props
+    const file = Object.assign(acceptedFiles[acceptedFiles.length - 1], {
+      preview:
+        URL && URL.createObjectURL
+          ? URL.createObjectURL(acceptedFiles[acceptedFiles.length - 1])
+          : typeof window !== 'undefined' && window.webkitURL
+          ? window.webkitURL.createObjectURL(acceptedFiles[acceptedFiles.length - 1])
+          : null
+    })
+    onChange('upload', file)
+  }
+
+  handleOnDropRejected1 = rejectedFiles => {
+    alert('This file type is not allowed:' + rejectedFiles[rejectedFiles.length - 1].name)
+  }
+
   handleOnDropRejected = rejectedFiles => {
     alert('This file type is not allowed:' + rejectedFiles[rejectedFiles.length - 1].name)
   }
@@ -123,14 +140,43 @@ class Input extends React.Component {
               )
             }}
           </DropzoneWithNoSSR>
-        ) : (
-          <textarea
-            onChange={this.handleInputChange}
-            defaultvalue={this.state.value}
-            placeholder={placeholder}
-            className={className}
-          />
-        )}
+        ) : type == 'video' ? (
+          <DropzoneWithNoSSR
+            accept='video/*'
+            onDropAccepted={this.handleOnDropAccepted1}
+            onDropRejected={this.handleOnDropRejected1}
+            multiple={false}
+          >
+            {({ getRootProps, getInputProps, isDragActive }) => {
+              return (
+                <div {...getRootProps()} className='upload'>
+                  <input {...getInputProps()} />
+                  {isDragActive || (!value || value == '') ? (
+                    <div className={'video-upload'}>Drop a photo here...</div>
+                  ) : (
+                    <div className={'video'}>
+                    <div
+                      className={'thumbnail'}
+                      style={{
+              backgroundImage: `url(${'http://localhost:3001/uploads/1.jpg'})`
+                      }}
+                    />
+                      <span className={'link'}>{value}</span>
+                    </div>
+                  )}
+                </div>
+              )
+            }}
+            </DropzoneWithNoSSR>
+          ) : (
+            <textarea
+              onChange={this.handleInputChange}
+              defaultvalue={this.state.value}
+              placeholder={placeholder}
+              className={className}
+            />
+          )
+      }
         <style jsx>{`
           .inputGroup {
             margin-bottom: 16px;
@@ -155,6 +201,21 @@ class Input extends React.Component {
           select,
           .photo,
           .photo-upload {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            background-color: #f7f7f7;
+            min-height: 40px;
+            min-width: ${expand ? '450px' : '0px'};
+            border-radius: 2px;
+            border: none;
+            outline: none;
+            padding: 8px;
+            padding-left: 16px;
+            padding-right: 16px;
+            font-size: 16px;
+          }
+          .video,
+          .video-upload {
             font-family: 'Open Sans', sans-serif;
             color: #333;
             background-color: #f7f7f7;
@@ -200,15 +261,23 @@ class Input extends React.Component {
             outline: none;
             max-width: 100%;
           }
-
-          .photo {
+          .video
+          {
+           display: flex;
+           flex-direction: row;
+           align-items: center;
+           padding: 8px;
+         }
+          .photo
+           {
             display: flex;
             flex-direction: row;
             align-items: center;
             padding: 8px;
           }
 
-          .photo-upload {
+          .video-upload
+          {
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -221,6 +290,28 @@ class Input extends React.Component {
             height: 40px;
           }
 
+          .photo-upload
+          {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 8px;
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            border-radius: 4px;
+            border: 2px dashed #adadad;
+            background: white;
+            height: 40px;
+          }
+          .video .link1 {
+            margin-left: 16px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 400px;
+          }
+
+
           .photo .link {
             margin-left: 16px;
             overflow: hidden;
@@ -230,6 +321,15 @@ class Input extends React.Component {
           }
 
           .photo .thumbnail {
+            height: 40px;
+            width: 40px;
+            border-radius: 2px;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .video .thumbnail {
             height: 40px;
             width: 40px;
             border-radius: 2px;
