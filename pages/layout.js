@@ -113,60 +113,17 @@ class Layout extends React.Component {
               <FontAwesomeIcon icon={faPencilAlt} fixedWidth color='#828282' />
             </div>
           </div>
-        </div>
-        <Form>
-          <Switch
-            checkedLabel={'On'}
-            uncheckedLabel={'Off'}
-            checked={display.layout == ''}
-            onChange={(name, checked) => display.updateLayout(checked ? '' : '')}
-          />
-        </Form>
-        <div className='settings'>
-          <DropdownButton
-            icon='plus'
-            text='Add Status Bar Item'
-            onSelect={display.addStatusBarItem}
-            choices={Object.keys(StatusBarElementTypes).map(statusBarEl => ({
-              key: statusBarEl,
-              name: StatusBarElementTypes[statusBarEl].name,
-              icon: StatusBarElementTypes[statusBarEl].icon
-            }))}
-          />
-        </div>
-
-        <div className='statusbar'>
-          {display && display.statusBar && (
-            <DragDropContext onDragEnd={this.onDragEnd}>
-              <Droppable droppableId='droppable' direction='horizontal'>
-                {provided => (
-                  <div
-                    ref={provided.innerRef}
-                    style={{
-                      display: 'flex',
-                      paddingTop: 8,
-                      paddingBottom: 8,
-                      paddingRight: 4,
-                      paddingLeft: 4,
-                      overflow: 'auto',
-                      height: '100%',
-                      boxSizing: 'border-box'
-                    }}
-                    {...provided.droppableProps}
-                  >
-                    {display.statusBar.map((item, index) => (
-                      <StatusBarElement
-                        item={item}
-                        index={index}
-                        onDelete={display.removeStatusBarItem.bind(this, index)}
-                      />
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </DragDropContext>
-          )}
+          <div className='wol'>
+            <img src = './administration/layoutbuttonicon.png' width="30px" align="left"/>
+            <Form>
+              <Switch
+                checkedLabel={'On'}
+                uncheckedLabel={'Off'}
+                checked={display.layout == ''}
+                onChange={(name, checked) => display.updateLayout(checked ? '' : '')}
+              />
+            </Form>
+          </div>
         </div>
         <div className='settings'>
           <DropdownButton
@@ -180,14 +137,14 @@ class Layout extends React.Component {
             }))}
           />
           <Form>
-            <Switch
-              checkedLabel={'Compact'}
-              uncheckedLabel={'Spaced'}
-              checkedIcon={faTh}
-              uncheckedIcon={faThLarge}
-              checked={display.layout == 'spaced'}
-              onChange={(name, checked) => display.updateLayout(checked ? 'spaced' : 'compact')}
-            />
+          <Switch
+            checkedLabel={'Compact'}
+            uncheckedLabel={'Spaced'}
+            checkedIcon={faTh}
+            uncheckedIcon={faThLarge}
+            checked={display.layout == 'spaced'}
+            onChange={(name, checked) => display.updateLayout(checked ? 'spaced' : 'compact')}
+          />
           </Form>
         </div>
         <div className='layout'>
@@ -219,6 +176,12 @@ class Layout extends React.Component {
               margin: 0px;
               display: inline-block;
               margin-right: 16px;
+            }
+            .wol {
+              position: absolute;
+              top: 5%;
+              left: 90%;
+              transform:translate(-50%,-50%);
             }
             .head {
               margin-bottom: 24px;

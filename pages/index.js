@@ -1,5 +1,3 @@
-
-
 import Frame from '../components/Admin/Frame.js'
 import React from 'react'
 import Link from 'next/link'
@@ -33,7 +31,8 @@ class Index extends React.Component {
     const { displays = [] } = this.state
     return (
       <div className='home'>
-        <img src ="./uploads/logo.png" alt="logo"width="700" height="auto"/>
+      <div className='center'>
+        <img src ="./administration/logo.png" alt="logo"width="830" height="auto"/>
         <div className='btn-group'>
           <Link href='/layout' style={{ margin: 20 }}>
             <div className='btn admin'>Admin Home</div>
@@ -49,6 +48,7 @@ class Index extends React.Component {
                 name: display.name
               }))}
             />
+            </div>
           </div>
         </div>
         <style jsx>
@@ -57,11 +57,10 @@ class Index extends React.Component {
               background:#334467 ;
               background-size:cover;
               font-family: 'Open Sans', sans-serif;
-              padding: 40px;
               min-height: 100%;
-              min-width: auto;
+              min-width: 100%;
               width:100%;
-              height: auto;
+              height: 100%;
               position: fixed;
               top: 0;
               left: 0;
@@ -69,6 +68,12 @@ class Index extends React.Component {
               text-align: center;
             }
             .home p {
+            }
+            .center {
+              position: absolute;
+              top: 45%;
+              left: 50%;
+              transform:translate(-50%,-50%);
             }
             .btn-group {
               display: flex;

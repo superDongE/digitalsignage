@@ -50,7 +50,7 @@ class Sidebar extends Component {
       ? [
           {
             id: 'screen',
-            name: 'Screens',
+            name: 'playlist',
             path: '/screens?display=' + display.id,
             icon: faTv
           },
@@ -126,7 +126,7 @@ class Sidebar extends Component {
               <FontAwesomeIcon icon={faSignOutAlt} fixedWidth />
               <span className={'text'}>{'   home'}</span>
             </span>
-          </Link>
+            </Link>
         <style jsx>
           {`
             .sidebar {
