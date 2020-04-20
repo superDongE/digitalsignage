@@ -5,7 +5,7 @@ const Slide = new Schema({
   data: { type: String, default: '' },
   type: {
     type: String,
-    default: '',
+    default: 'photo',
     enum: ['photo', 'web', 'youtube', 'video']
   },
   title: { type: String },
