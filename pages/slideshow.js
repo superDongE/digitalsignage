@@ -144,7 +144,6 @@ class Slideshow extends React.Component {
               margin: 40px auto;
               max-width: 640px;
             }
-
           `}
         </style>
       </Frame>

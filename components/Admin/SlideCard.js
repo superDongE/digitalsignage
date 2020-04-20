@@ -28,9 +28,10 @@ class SlideCard extends Component {
           <div
             className={'thumbnail'}
             style={{
-              backgroundImage: value.type == 'photo' ? `url(${value.data})` : 'none',
+            backgroundImage: value.type == 'photo' ? `url(${value.data})` : 'none',
+              backgroundImage: value.type == 'video' ? `url(${ 'http://localhost:3001/uploads/1.jpg'})` : 'none',
               backgroundColor:
-                value.type == 'youtube'
+                   value.type == 'youtube'
                   ? '#c23616'
                   : value.type == 'web'
                   ? '#0097e6'

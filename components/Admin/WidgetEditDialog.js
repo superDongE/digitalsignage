@@ -49,8 +49,8 @@ class WidgetEditDialog extends React.Component {
       <Dialog ref={this.dialog}>
         <OptionsComponent data={data} onChange={this.handleChange} />
         <ButtonGroup style={{ marginTop: 20 }}>
-          <Button text={'저장'} color={'#8bc34a'} onClick={this.saveData} />
-          <Button text={'취소'} color={'#e85454'} onClick={this.close} />
+          <Button text={'Save'} color={'#8bc34a'} onClick={this.saveData} />
+          <Button text={'Cancel'} color={'#e85454'} onClick={this.close} />
         </ButtonGroup>
       </Dialog>
     )

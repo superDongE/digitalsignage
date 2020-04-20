@@ -10,7 +10,7 @@ export default class Web extends BaseWidget {
       icon: ['fab', 'youtube'],
       defaultData: {
         title: null,
-        url: '',
+        url: 'https://www.youtube.com/watch?v=9xwazD5SyVg',
         color: '#95a5a6'
       }
     })

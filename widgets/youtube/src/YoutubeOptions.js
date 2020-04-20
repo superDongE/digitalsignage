@@ -28,11 +28,11 @@ class YoutubeOptions extends Component {
     return (
       <div className={'container'}>
         <Form>
-          <h3>Widget: Youtube</h3>
-          <p>Choose your preferences for the youtube widget.</p>
+          <h3>위젯: Youtube</h3>
+          <p>Youtube 위젯 설정</p>
           <Input
             inline={false}
-            label={'Webpage URL'}
+            label={'웹페이지 주소'}
             type={'text'}
             name={'url'}
             value={url}
@@ -40,7 +40,7 @@ class YoutubeOptions extends Component {
           />
           <Input
             inline={false}
-            label={'Background color'}
+            label={'배경색'}
             type={'color'}
             name={'color'}
             value={color}
@@ -48,7 +48,7 @@ class YoutubeOptions extends Component {
           />
           <Input
             inline={false}
-            label={'Widget title'}
+            label={'위젯 제목'}
             type={'text'}
             name={'title'}
             value={title}

@@ -61,7 +61,7 @@ class Display extends React.Component {
     const GridLayoutWithHeight = HeightProvider(GridLayout, this.container, layout)
 
     return (
-      <Frame>
+      <Frame statusBar={statusBar}>
         <div className={'gridContainer'} ref={ref => (this.container = ref)}>
           <GridLayoutWithHeight
             className='layout'
