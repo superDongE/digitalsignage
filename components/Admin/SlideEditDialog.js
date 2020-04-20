@@ -41,7 +41,7 @@ class SlideEditDialog extends React.Component {
           duration: undefined,
           ...data,
           upload,
-          ...(upload ? { type: 'photo' } : {})
+          ...(upload ? { type: 'photo'} : {})
         })
       })
     } else {
@@ -57,6 +57,7 @@ class SlideEditDialog extends React.Component {
       return Promise.resolve()
     }
   }
+
 
   open = () => {
     this.refresh()
@@ -106,14 +107,24 @@ class SlideEditDialog extends React.Component {
             choices={[
               { id: 'youtube', label: 'Youtube Video' },
               { id: 'web', label: 'Web Page' },
-              { id: 'photo', label: 'Photo' }
+              { id: 'photo', label: 'Photo' },
+              { id: 'video', label: 'video'}
             ]}
             onChange={this.handleChange}
           />
           {type == 'photo' || upload ? (
             <Input
               type={'photo'}
-              label={'Photo'}
+              label={'photo'}
+              name={'upload'}
+              value={upload ? upload.preview : data}
+              onChange={this.handleChange}
+              inline={true}
+            />
+          ) : type == 'video' || upload ? (
+            <Input
+              type={'video'}
+              label={'video'}
               name={'upload'}
               value={upload ? upload.preview : data}
               onChange={this.handleChange}
@@ -127,7 +138,8 @@ class SlideEditDialog extends React.Component {
               value={data}
               onChange={this.handleChange}
             />
-          )}
+          )
+        }
           <Input
             type={'number'}
             label={'Duration'}

@@ -73,6 +73,7 @@ app
 
     // Static routes
     server.use('/uploads', express.static('uploads'))
+    server.use('/img', express.static('img'))
 
     // Next.js routes
     server.get('*', (req, res) => {
