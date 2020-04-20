@@ -113,15 +113,18 @@ class Layout extends React.Component {
               <FontAwesomeIcon icon={faPencilAlt} fixedWidth color='#828282' />
             </div>
           </div>
+          <div className='wol'>
+            <img src = './administration/layoutbuttonicon.png' width="30px" align="left"/>
+            <Form>
+              <Switch
+                checkedLabel={'On'}
+                uncheckedLabel={'Off'}
+                checked={display.layout == ''}
+                onChange={(name, checked) => display.updateLayout(checked ? '' : '')}
+              />
+            </Form>
+          </div>
         </div>
-        <Form>
-          <Switch
-            checkedLabel={'On'}
-            uncheckedLabel={'Off'}
-            checked={display.layout == ''}
-            onChange={(name, checked) => display.updateLayout(checked ? '' : '')}
-          />
-        </Form>
         <div className='settings'>
           <DropdownButton
             icon='plus'
@@ -180,14 +183,14 @@ class Layout extends React.Component {
             }))}
           />
           <Form>
-            <Switch
-              checkedLabel={'Compact'}
-              uncheckedLabel={'Spaced'}
-              checkedIcon={faTh}
-              uncheckedIcon={faThLarge}
-              checked={display.layout == 'spaced'}
-              onChange={(name, checked) => display.updateLayout(checked ? 'spaced' : 'compact')}
-            />
+          <Switch
+            checkedLabel={'Compact'}
+            uncheckedLabel={'Spaced'}
+            checkedIcon={faTh}
+            uncheckedIcon={faThLarge}
+            checked={display.layout == 'spaced'}
+            onChange={(name, checked) => display.updateLayout(checked ? 'spaced' : 'compact')}
+          />
           </Form>
         </div>
         <div className='layout'>
@@ -219,6 +222,12 @@ class Layout extends React.Component {
               margin: 0px;
               display: inline-block;
               margin-right: 16px;
+            }
+            .wol {
+              position: absolute;
+              top: 5%;
+              left: 90%;
+              transform:translate(-50%,-50%);
             }
             .head {
               margin-bottom: 24px;
