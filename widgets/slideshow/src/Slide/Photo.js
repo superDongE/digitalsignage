@@ -32,7 +32,7 @@ class PhotoSlide extends GenericSlide {
   }
 
   /**
-   * Renders the inner content of the slide (ex. the photo, youtube iframe,video, etc)
+   * Renders the inner content of the slide (ex. the photo, youtube iframe, etc)
    * @param {string} data The slide's data (usually a URL or object ID)
    * @returns {Component}
    */

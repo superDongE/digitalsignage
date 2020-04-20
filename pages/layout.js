@@ -113,32 +113,17 @@ class Layout extends React.Component {
               <FontAwesomeIcon icon={faPencilAlt} fixedWidth color='#828282' />
             </div>
           </div>
-          <div className='fofo2'>
-            <img src = './img/ccc.png' align='left' width ='30px' letter-spacing ='110000px' display='inline'/>
-            <Form>
-              <Switch
-                checkedLabel={'On'}
-                uncheckedLabel={'Off'}
-                checked={display.layout == ''}
-                onChange={(name, checked) => display.updateLayout(checked ? '' : '')}
-              />
-            </Form>
-          </div>
         </div>
-        <div className='settings'>
-          <DropdownButton
-            icon='plus'
-            text='Add Status Bar Item'
-            onSelect={display.addStatusBarItem}
-            choices={Object.keys(StatusBarElementTypes).map(statusBarEl => ({
-              key: statusBarEl,
-              name: StatusBarElementTypes[statusBarEl].name,
-              icon: StatusBarElementTypes[statusBarEl].icon
-            }))}
+        <Form>
+          <Switch
+            checkedLabel={'On'}
+            uncheckedLabel={'Off'}
+            checked={display.layout == ''}
+            onChange={(name, checked) => display.updateLayout(checked ? '' : '')}
           />
-        </div>
+        </Form>
 
-        <div className='statusbar'>
+        <div className=''>
           {display && display.statusBar && (
             <DragDropContext onDragEnd={this.onDragEnd}>
               <Droppable droppableId='droppable' direction='horizontal'>
@@ -183,14 +168,14 @@ class Layout extends React.Component {
             }))}
           />
           <Form>
-          <Switch
-            checkedLabel={'Compact'}
-            uncheckedLabel={'Spaced'}
-            checkedIcon={faTh}
-            uncheckedIcon={faThLarge}
-            checked={display.layout == 'spaced'}
-            onChange={(name, checked) => display.updateLayout(checked ? 'spaced' : 'compact')}
-          />
+            <Switch
+              checkedLabel={'Compact'}
+              uncheckedLabel={'Spaced'}
+              checkedIcon={faTh}
+              uncheckedIcon={faThLarge}
+              checked={display.layout == 'spaced'}
+              onChange={(name, checked) => display.updateLayout(checked ? 'spaced' : 'compact')}
+            />
           </Form>
         </div>
         <div className='layout'>

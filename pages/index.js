@@ -33,8 +33,7 @@ class Index extends React.Component {
     const { displays = [] } = this.state
     return (
       <div className='home'>
-        <div className='total'>
-        <img src ="./uploads/logo.png" alt="logo"width="830" height="auto"/>
+        <img src ="./uploads/logo.png" alt="logo"width="700" height="auto"/>
         <div className='btn-group'>
           <Link href='/layout' style={{ margin: 20 }}>
             <div className='btn admin'>Admin Home</div>
@@ -52,20 +51,21 @@ class Index extends React.Component {
             />
           </div>
         </div>
-        </div>
         <style jsx>
           {`
             .home {
               background:#334467 ;
               background-size:cover;
               font-family: 'Open Sans', sans-serif;
+              padding: 40px;
               min-height: 100%;
-              min-width: 100%;
+              min-width: auto;
               width:100%;
-              height: 100%;
+              height: auto;
               position: fixed;
-              top: 0%;
-              left: 0%;
+              top: 0;
+              left: 0;
+              margin: auto;
               text-align: center;
             }
             .home p {
@@ -87,12 +87,6 @@ class Index extends React.Component {
               //border-radius: 4px;
               margin: 20px;
               font-size: 16;
-            }
-            .total {
-              position: absolute;
-              top: 45%;
-              left: 50%;
-              transform:translate(-50%,-50%);
             }
             .btn.admin {
               background: #334467;

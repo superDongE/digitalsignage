@@ -52,7 +52,7 @@ class WebOptions extends Component {
             placeholder={'Optional title...'}
             type={'text'}
             name={'title'}
-            defaultvalue={title}
+            value={title}
             onChange={this.handleChange}
           />
         </Form>
