@@ -34,7 +34,7 @@
     "@zeit/next-css": "^1.0.1",
     "animated-scroll-to": "^1.2.2",
     "array-move": "^2.1.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.0.1",
     "body-parser": "^1.18.3",
     "boxen": "^4.0.0",
